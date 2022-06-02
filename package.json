@@ -1,9 +1,11 @@
 {
   "name": "web-api",
   "version": "1.0.0",
-  "description": "",
+  "description": "This is my first api with pure javascript, without frameworks.",
   "main": "index.js",
+  "type": "module",
   "scripts": {
+    "start": "node src/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
