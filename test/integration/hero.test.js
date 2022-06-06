@@ -7,18 +7,18 @@ test('Hero Integration Test Suit', async (t) => {
 
     // thats a bad practice
     process.env.PORT = testPort
-    const { server } = await import('/src/index.js')
+    const { server } = await import('../../src/index.js')
 
-    const testServerAdress = `http://localhost:${testPort}/heroes`
+    const testServerAddress = `http://localhost:${testPort}/heroes`
 
-    await t.todo('it should create a hero', async (t) => {
+    await t.test('it should create a hero', async (t) => {
         const data = {
             name: "Batman",
             age: 50,
             power: "rich"
         }
 
-        const request = await fetch(testServerAdress, {
+        const request = await fetch(testServerAddress, {
             method: 'POST',
             body: JSON.stringify(data)
         })
