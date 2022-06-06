@@ -1,5 +1,5 @@
 import { parse } from 'node:url'
-import { DEFAULT_HEADER } from '/src/util/util.js'
+import { DEFAULT_HEADER } from './util/util.js'
 
 const allroutes = {
     '/heroes:get': async (request, response) => {
