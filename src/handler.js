@@ -1,14 +1,15 @@
 import { parse } from 'node:url'
 
 const allroutes = {
-    'heroes:get': (request, response) => {
+    '/heroes:get': (request, response) => {
         response.write('GET')
         response.end()
     },
     // 404 routes
     default: (request, response) => {
-        response.write('Hello')
-        response.end
+        response.write('ooops, not found!')
+        response.writeHead(404)
+        response.end()
     }
 }
 function handler (request, response) {
@@ -22,8 +23,8 @@ function handler (request, response) {
     } = parse(url, true)
 
     const key = `${pathname}:${method.toLowerCase()}`
-    const chosen = allroutes
-    response.end('Hello World')
+    const chosen = allroutes[key] || allroutes.default
+    return chosen(request, response)
 }
 
 export default handler
