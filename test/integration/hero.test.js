@@ -1,11 +1,10 @@
 import test from 'node:test'
 import assert from 'node:assert'
 import { promisify } from 'node:util'
+test('Hero Integration Test Suite', async (t) => {
+    const testPort = 9009
 
-test('Hero Integration Test Suit', async (t) => {
-    const testPort  = 9009
-
-    // thats a bad practice
+    // that's bad practice because it mutates the environment
     process.env.PORT = testPort
     const { server } = await import('../../src/index.js')
 
@@ -33,7 +32,7 @@ test('Hero Integration Test Suit', async (t) => {
         const result = await request.json()
         assert.deepStrictEqual(
             result.success,
-            'User created with success!',
+            'User created with success!!',
             'it should return a valid text message'
         )
 
@@ -42,7 +41,9 @@ test('Hero Integration Test Suit', async (t) => {
             'id should be a valid uuid'
         )
 
+
     })
 
     await promisify(server.close.bind(server))()
+
 })

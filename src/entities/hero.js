@@ -1,7 +1,7 @@
-import { randdomUUID } from 'node:crypto'
+import { randomUUID } from 'node:crypto'
 export default class Hero {
     constructor({ name, age, power }) {
-        this.id = randdomUUID
+        this.id = randomUUID
         this.name = name
         this.age = age
         this.power = power
