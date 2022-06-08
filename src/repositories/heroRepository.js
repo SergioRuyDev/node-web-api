@@ -5,9 +5,9 @@ import {
 
 export default class HeroRepository {
     constructor({
-                    file
-                }) {
-        this.file = file
+     file
+    }) {
+     this.file = file
     }
 
     async #currentFileContent() {

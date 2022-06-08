@@ -1,8 +1,21 @@
-import { join, dirname } from 'node:path'
-import { fileURLToPath } from 'node:url'
-import { parse } from 'node:url'
-import { DEFAULT_HEADER } from './util/util.js'
+
+import {
+    join,
+    dirname
+} from 'node:path'
+
+import {
+    fileURLToPath
+} from 'node:url'
+
+import {
+    parse
+} from 'node:url'
 import { routes } from './routes/heroRoute.js'
+import {
+    DEFAULT_HEADER
+} from './util/util.js'
+
 import { generateInstance } from './factories/heroFactory.js'
 
 const currentDir = dirname(
@@ -10,27 +23,28 @@ const currentDir = dirname(
         import.meta.url
     )
 )
-
 const filePath = join(currentDir, './../database', 'data.json')
 
 const heroService = generateInstance({
     filePath
 })
+
 const heroRoutes = routes({
     heroService
 })
 
 const allRoutes = {
     ...heroRoutes,
+
     // 404 routes
     default: (request, response) => {
         response.writeHead(404, DEFAULT_HEADER)
-        response.write('ooops, not found!')
+        response.write('uuuuups, not found!')
         response.end()
     }
 }
 
-function handler (request, response) {
+function handler(request, response) {
     const {
         url,
         method
@@ -49,13 +63,13 @@ function handler (request, response) {
 
 function handlerError(response) {
     return error => {
-        console.log('Something bad has happened', error.stack)
+        console.log('Something bad has  happened**', error.stack)
         response.writeHead(500, DEFAULT_HEADER)
         response.write(JSON.stringify({
-            error: 'Internal server error!'
+            error: 'internet server error!!'
         }))
 
-        return response.end
+        return response.end()
     }
 }
 
