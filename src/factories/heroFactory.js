@@ -1,4 +1,4 @@
-import HeroRepository from "../repositories/heroRepository.js"
+import HeroRepository from "../../../complete-nodejs-webapi-without-frameworks-yt/examples-in-class/web-api/src/repositories/heroRepository.js"
 import HeroService from "../services/heroService.js"
 
 const generateInstance = ({
