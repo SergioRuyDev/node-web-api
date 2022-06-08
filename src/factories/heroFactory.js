@@ -1,18 +1,18 @@
-import HeroRepository from "../repositories/heroRepository.js";
-import HeroService from "../services/heroService.js";
+import HeroRepository from "../repositories/heroRepository.js"
+import HeroService from "../services/heroService.js"
 
 const generateInstance = ({
-    filepath
+  filePath
 }) => {
-    //hero goes all db connection
-    const heroRepository = new HeroRepository({
-        file: filepath
-    })
-    const heroService = new HeroService({
-        heroRepository
-    })
+   // hero goes all db connections
+   const heroRepository = new HeroRepository({
+       file: filePath
+   })
+   const heroService = new HeroService({
+     heroRepository
+   })
 
-    return heroService
+   return heroService
 }
 
 export {

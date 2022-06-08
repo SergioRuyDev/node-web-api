@@ -14,18 +14,18 @@ const currentDir = dirname(
 const filePath = join(currentDir, './../database', 'data.json')
 
 const heroService = generateInstance({
-    filepath
+    filePath
 })
 const heroRoutes = routes({
-    heroService: {}
+    heroService
 })
 
-const allroutes = {
+const allRoutes = {
     ...heroRoutes,
     // 404 routes
     default: (request, response) => {
-        response.write('ooops, not found!')
         response.writeHead(404, DEFAULT_HEADER)
+        response.write('ooops, not found!')
         response.end()
     }
 }
@@ -41,7 +41,7 @@ function handler (request, response) {
     } = parse(url, true)
 
     const key = `${pathname}:${method.toLowerCase()}`
-    const chosen = allroutes[key] || allroutes.default
+    const chosen = allRoutes[key] || allRoutes.default
 
     return Promise.resolve(chosen(request, response))
         .catch(handlerError(response))
